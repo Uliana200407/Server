@@ -54,7 +54,7 @@ public class Client {
         }
 
     }
-    private void sendCommands() throws IOException {
+    void sendCommands() throws IOException {
         BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
         String command;
 
@@ -66,7 +66,7 @@ public class Client {
             }
         }
     }
-    private void captureScreenshot() {
+    void captureScreenshot() {
         try {
             Robot robot = new Robot();
             Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
@@ -88,7 +88,7 @@ public class Client {
             System.err.println("[ERROR]Trouble with refusing connection: " + e.getMessage());
         }
     }
-    private void receiveSMS() {
+    void receiveSMS() {
         try {
             String message;
             while ((message = reader.readLine()) != null) {

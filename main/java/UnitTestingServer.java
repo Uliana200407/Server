@@ -5,12 +5,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.ServerSocket;
-import org.mockito.Mockito;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class UnitTesting extends Server {
+public class UnitTestingServer extends Server {
     private static final String FILE_FOR_CONNECTIONS = "connections.dat";
     @Test
 
