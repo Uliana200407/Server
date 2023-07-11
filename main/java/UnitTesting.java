@@ -39,10 +39,7 @@ public class UnitTesting extends Server {
             e.printStackTrace();
         }
 
-        // Invoke the start() method
         server.start(8081);
-
-        // Verify the output
         assertEquals("Server started on port 8081\n", outputStream.toString());
 
         // Clean up
@@ -79,7 +76,6 @@ public class UnitTesting extends Server {
         Socket clientSocket3 = new Socket ( serverSocket.getInetAddress (), serverSocket.getLocalPort () );
         Server server = new Server ();
 
-        // Create some mock client connections
         ClientConnection connection1 = new ClientConnection ( clientSocket1, "John", LocalDateTime.now () );
         ClientConnection connection2 = new ClientConnection ( clientSocket2, "Alice", LocalDateTime.now () );
         ClientConnection connection3 = new ClientConnection ( clientSocket3, "Uliana", LocalDateTime.now () );
