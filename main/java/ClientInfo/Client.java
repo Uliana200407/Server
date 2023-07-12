@@ -1,9 +1,10 @@
+package ClientInfo;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class Client {
     private static final String ADDRESS = "192.168.3.197";
@@ -59,7 +60,7 @@ public class Client {
         String command;
 
         while ((command = consoleReader.readLine()) != null) {
-            if (command.equalsIgnoreCase("Client")) {
+            if (command.equalsIgnoreCase("ClientInfo.Client")) {
                 captureScreenshot();
             } else {
                 writer.println(command);
@@ -71,7 +72,7 @@ public class Client {
             Robot robot = new Robot();
             Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
             BufferedImage screenshot = robot.createScreenCapture(screenRect);
-            String fileName = "Client.png";
+            String fileName = "ClientInfo.Client.png";
             ImageIO.write(screenshot, "png", new File (fileName));
             System.out.println("[ACTION]Screenshot saved as: " + fileName);
         } catch (AWTException | IOException e) {

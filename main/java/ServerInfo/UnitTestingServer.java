@@ -1,3 +1,6 @@
+package ServerInfo;
+
+import ServerInfo.Server;
 import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.net.Socket;
@@ -40,7 +43,7 @@ public class UnitTestingServer extends Server {
         }
 
         server.start(8081);
-        assertEquals("Server started on port 8081\n", outputStream.toString());
+        assertEquals("ServerInfo.Server started on port 8081\n", outputStream.toString());
 
         // Clean up
         System.setOut(System.out);

@@ -1,11 +1,10 @@
+package ServerInfo;
+
 import java.io.*;
 import java.net.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.io.FileDescriptor.out;
-import static java.lang.System.in;
 
 public class Server {
 
@@ -45,7 +44,7 @@ public class Server {
 
         try {
             ServerSocket serverSocket = new ServerSocket(port);
-            System.out.println("[ACTION] Server started on port " + port);
+            System.out.println("[ACTION] ServerInfo.Server started on port " + port);
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
