@@ -29,7 +29,6 @@ public class Client {
             receivingThread.start();
             sendCommands();
 
-            // Signal the latch to indicate successful connection
             connectionLatch.countDown();
 
         } catch (IOException e) {

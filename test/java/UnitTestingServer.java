@@ -46,9 +46,9 @@ class UnitTestingServer {
 
         Thread serverThread = new Thread(() -> {
             Server server = new Server();
-            int port = Integer.parseInt(input.trim()); // Convert the input to an integer
+            int port = Integer.parseInt(input.trim());
             server.start(port);
-            latch.countDown(); // Signal that the server has started
+            latch.countDown();
         });
         serverThread.start();
 
@@ -79,7 +79,7 @@ class UnitTestingServer {
 
     private static class TestClientConnection extends Server.ClientConnection {
         public TestClientConnection() {
-            super(null, "Test Client", null); // Passing null values to avoid actual Socket creation
+            super(null, "Test Client", null);
         }
 
         @Override
