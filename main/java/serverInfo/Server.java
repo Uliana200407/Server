@@ -1,4 +1,4 @@
-package ServerInfo;
+package serverInfo;
 
 import java.io.*;
 import java.net.*;
@@ -7,28 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Server {
-
-    public List<ClientConnection> getClientConnections() {
-        return clientConnections;
-    }
-
-    public void setClientConnections(List<ClientConnection> clientConnections) {
-        this.clientConnections = clientConnections;
-    }
-
     private static List<ClientConnection> clientConnections;
     private static final String FILE_FOR_CONNECTIONS = "connections.dat";
-
-    public static void main(String[] args) {
-        Server server = new Server();
-        server.start(8081);
-    }
 
     public Server() {
         clientConnections = new ArrayList<>();
     }
-
-    String getClientName(Socket clientSocket) {
+    public List<ClientConnection> getClientConnections() {
+        return clientConnections;
+    }
+    public String getClientName(Socket clientSocket) {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream(), "UTF-8"));
             return reader.readLine();
@@ -38,13 +26,12 @@ public class Server {
         return null;
     }
 
-
     public void start(int port) {
         upload();
 
         try {
             ServerSocket serverSocket = new ServerSocket(port);
-            System.out.println("[ACTION] ServerInfo.Server started on port " + port);
+            System.out.println("[ACTION] Server started on port " + port);
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
@@ -54,7 +41,7 @@ public class Server {
                 clientConnections.add(clientConnection);
                 clientConnection.start();
 
-                broadcastMessage("New client connected: " + clientSocket);
+                broadcastMessage("New client connected: " + clientName);
 
                 saveConnections();
             }
@@ -89,9 +76,13 @@ public class Server {
         }
     }
 
-    protected static class ClientConnection extends Thread implements Serializable {
+    public static void main(String[] args) {
+        Server server = new Server();
+        server.start(8081);
+    }
+
+    public static class ClientConnection extends Thread implements Serializable {
         private transient Socket clientSocket;
-        // private Socket clientSocket;
         private String clientName;
         private LocalDateTime time;
         private PrintWriter writer;
@@ -118,6 +109,7 @@ public class Server {
         private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
             in.defaultReadObject();
         }
+
         public void run() {
             try {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream(), "UTF-8"));
