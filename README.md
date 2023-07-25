@@ -4,4 +4,5 @@ Server to take client issues and to process client accounts with some data:
 1. time - current position of logging in;
 1. name of the clent;
 1. some additional info;
+
 _Also is everything is right - the server will send the sucessful reply to the client and also does an additional screenshot_
